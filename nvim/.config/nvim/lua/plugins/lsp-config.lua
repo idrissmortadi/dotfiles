@@ -1,47 +1,42 @@
 return {
   {
     "williamboman/mason.nvim",
-    lazy = false,
     config = function()
       require("mason").setup()
-    end,
+    end
   },
   {
     "williamboman/mason-lspconfig.nvim",
-    lazy = false,
-    opts = {
-      auto_install = true,
-    },
+    config = function()
+      require("mason-lspconfig").setup({
+        ensure_installed = {"lua_ls", "pylsp", "html", "tsserver", "clangd"}
+      })
+    end
   },
   {
     "neovim/nvim-lspconfig",
-    lazy = false,
     config = function()
-      local capabilities = require('cmp_nvim_lsp').default_capabilities()
-
+      local capabilities = require("cmp_nvim_lsp").default_capabilities()
       local lspconfig = require("lspconfig")
-      lspconfig.tailwindcss.setup({
+      lspconfig.lua_ls.setup({
+        capabilites = capabilities
+      })
+      lspconfig.pylsp.setup({
+        capabilites = capabilities
+      })
+      lspconfig.html.setup({
         capabilities = capabilities
       })
       lspconfig.tsserver.setup({
         capabilities = capabilities
       })
-      lspconfig.solargraph.setup({
-        capabilities = capabilities
-      })
-      lspconfig.html.setup({
-        capabilities = capabilities
-      })
-      lspconfig.lua_ls.setup({
+      lspconfig.clangd.setup({
         capabilities = capabilities
       })
 
-      vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
-      vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
-      vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, {})
-      vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
-      vim.keymap.set("n", "<leader>rn", vim.lsp.buf.code_action, {})
-      vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, {})
-    end,
-  },
+      vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
+      vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {})
+      vim.keymap.set({'n', 'v'}, '<leader>ca', vim.lsp.buf.code_action, {})
+    end
+  }
 }
