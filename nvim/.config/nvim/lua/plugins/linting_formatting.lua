@@ -1,25 +1,26 @@
 return {
-  {'mfussenegger/nvim-lint',},
-  {
-    'stevearc/conform.nvim',
-    opts = {},
-    config = function ()
-      require("conform").setup({
-      formatters_by_ft = {
-        lua = { "stylua" },
-        -- Conform will run multiple formatters sequentially
-        python = { "isort", "black" },
-        -- Use a sub-list to run only the first available formatter
-        javascript = { { "prettier" } },
-      },
-    })
+	{ "mfussenegger/nvim-lint" },
+	{
+		"stevearc/conform.nvim",
+		opts = {},
+		config = function()
+			require("conform").setup({
+				formatters_by_ft = {
+					lua = { "stylua" },
+					python = { "isort", "black" },
+					javascript = { { "prettier" } },
+					typescript = { { "prettier" } },
+					javascriptreact = { { "prettier" } }, -- For .jsx files
+					typescriptreact = { { "prettier" } }, -- For .tsx files
+				},
+			})
 
-    vim.api.nvim_create_autocmd("BufWritePre", {
-      pattern = "*",
-      callback = function(args)
-        require("conform").format({ bufnr = args.buf })
-      end,
-    })
-    end
-  }
+			vim.api.nvim_create_autocmd("BufWritePre", {
+				pattern = "*",
+				callback = function(args)
+					require("conform").format({ bufnr = args.buf })
+				end,
+			})
+		end,
+	},
 }
