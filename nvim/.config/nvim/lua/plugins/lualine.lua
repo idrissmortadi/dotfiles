@@ -1,13 +1,12 @@
 return {
-  "nvim-lualine/lualine.nvim",
-  config = function()
-    require('lualine').setup({
-      options = {
-        theme = 'dracula',
-        component_separators = '',
-        section_separators = { left = '', right = '' },
-      }
-    })
-  end
+	"nvim-lualine/lualine.nvim",
+	config = function()
+		require("lualine").setup({
+			options = {
+				theme = "nord",
+				component_separators = "",
+				section_separators = { left = "", right = "" },
+			},
+		})
+	end,
 }
-
