@@ -66,13 +66,9 @@ tab_title_template          {title}{' :{}:'.format(num_windows) if num_windows >
 # Font
 font_size 12.0
 
-#Key maps
-map ctrl+shift+h neighboring_window left
-map ctrl+shift+l neighboring_window right
-map ctrl+shift+k neighboring_window top
-map ctrl+shift+j neighboring_window bottom
+
 
 # BEGIN_KITTY_THEME
-# Catppuccin-Mocha
+# Tokyo Night
 include current-theme.conf
 # END_KITTY_THEME
