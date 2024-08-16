@@ -1,11 +1,10 @@
-
 * {
   padding: 0;
   margin: 0;
   font-family: JetBrainsMono Nerd Font;
   font-weight: bold;
   font-size: 16px;
-  background-color: #1a1c2b; /* Reduced opacity background */ 
+  background-color: #1a1c2b; /* Reduced opacity background */
 }
 
 .modules-right {
@@ -26,13 +25,11 @@
   background-color: #1a1c2b;
 }
 
-
 #custom-hyprconfig {
   font-size: 20px;
   color: #00bfff;
   padding-right: 10px;
   background-color: #1a1c2b;
- 
 }
 
 #cpu,
@@ -144,7 +141,6 @@
   background-color: #1a1c2b;
 }
 
-
 #battery {
   color: #a6da95;
   /* margin: 0px 10px 0px 0px; */
@@ -162,6 +158,13 @@
 }
 #battery.critical {
   color: #ff007c;
+}
+
+#custom-battery-rate {
+  color: #a6da95;
+}
+#custom-battery-time {
+  color: #a6da95;
 }
 
 #pulseaudio,
@@ -257,8 +260,7 @@
   color: #ff007c;
 }
 
-#custom-uptime{
+#custom-uptime {
   color: lightGray;
 }
 /*# sourceMappingURL=style.css.map */
-

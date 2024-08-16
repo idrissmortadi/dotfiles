@@ -10,6 +10,8 @@ return {
 					python = { "isort", "black" },
 					c = { "clang-format" },
 					cpp = { "clang-format" },
+					html = { { "prettier" } },
+					css = { { "prettier" } },
 					javascript = { { "prettier" } },
 					typescript = { { "prettier" } },
 					javascriptreact = { { "prettier" } }, -- For .jsx files

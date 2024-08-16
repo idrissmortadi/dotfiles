@@ -145,11 +145,8 @@
     "format-charging": "󰂄 {capacity}%",
     "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
     "max-length": 25,
-    "tooltip": false,
+    "tooltip": true,
     "on-click": "slimbookbattery",
-  },
-  "custom/right-arr": {
-    "format": "  "
   },
   "custom/launcher": {
     "format": " 󰣇",
