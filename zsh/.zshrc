@@ -4,8 +4,8 @@ ZSH_THEME="robbyrussell"
 
 plugins=(git)
 
-source $ZSH/oh-my-zsh.sh
 
+source $ZSH/oh-my-zsh.sh
 eval "$(oh-my-posh init zsh --config "/home/idriss/dotfiles/zsh/zen.toml")"
 
 # Set the directory we want to store zinit and plugins
@@ -38,6 +38,10 @@ zinit snippet OMZP::command-not-found
 # Load completions
 autoload -Uz compinit && compinit
 
+# Poetry completion
+fpath+=~/.zfunc
+autoload -Uz compinit && compinit
+
 zinit cdreplay -q
 
 # Keybindings
@@ -59,8 +63,8 @@ setopt hist_save_no_dups
 setopt hist_ignore_dups
 setopt hist_find_no_dups
 
-# Completion styling
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+# Completion styling
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu no
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
@@ -68,8 +72,10 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
 # Aliases
 alias ls='lsd'
-alias l='lsd -l'
+alias l='lsd -l -a'
 alias c='clear'
+alias v='nvim'
+alias venv='source .venv/bin/activate'
 
 # Shell integrations
 eval "$(fzf --zsh)"
@@ -78,3 +84,9 @@ eval "$(zoxide init --cmd cd zsh)"
 
 # Load Angular CLI autocompletion.
 source <(ng completion script)
+
+# Created by `pipx` on 2024-09-07 12:49:59
+export PATH="$PATH:/home/idriss/.local/bin"
+
+# Zathura inverse search config
+export NVIM_LISTEN_ADDRESS=/tmp/nvimsocket
