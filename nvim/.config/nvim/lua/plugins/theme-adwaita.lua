@@ -1,10 +1,10 @@
 return {
   "Mofiqul/adwaita.nvim",
-  -- Configure LazyVim to load gruvbox
-  -- {
-  --   "LazyVim/LazyVim",
-  --   opts = {
-  --     colorscheme = "adwaita",
-  --   },
-  -- },
+  -- Configure LazyVim to load
+  {
+    "LazyVim/LazyVim",
+    opts = {
+      colorscheme = "adwaita",
+    },
+  },
 }
