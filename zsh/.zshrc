@@ -76,6 +76,8 @@ alias l='lsd -l -a'
 alias c='clear'
 alias v='nvim'
 alias venv='source .venv/bin/activate'
+alias tmuxcheat='~/dotfiles/tmux/tmux_cheat_sheet.sh'
+
 
 # Shell integrations
 eval "$(fzf --zsh)"
