@@ -1,5 +1,5 @@
 configuration{
-    modi: ["drun", "window", "run"];
+    modi: ["drun", "window", "run", "filebrowser", "recursivebrowser"];
     icon-theme: "Papirus-Dark";
     show-icons: true;
     terminal: "kitty";
@@ -10,7 +10,7 @@ configuration{
     display-drun: " ";
     display-run: " ";
     display-window: " ";
-    
+
     //adding vim keybindings
     kb-row-up: "Up,Control+k";
     kb-row-left: "Left,Control+h";
@@ -26,4 +26,4 @@ configuration{
     kb-move-char-forward: "Control+f";
     kb-mode-complete: "Control+o";
 }
-@theme "tokyonight.rasi"
+@theme "theme.rasi"

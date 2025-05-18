@@ -1,0 +1,105 @@
+return {
+  -- "yetone/avante.nvim",
+  -- event = "VeryLazy",
+  -- version = false,
+  -- opts = {
+  --   provider = "copilot/gpt-4.1",
+  --   auto_suggestions_provider = "copilot/gpt-4.1",
+  --   selector = {
+  --     --- @alias avante.SelectorProvider "native" | "fzf_lua" | "mini_pick" | "snacks" | "telescope" | fun(selector: avante.ui.Selector): nil
+  --     provider = "telescope", -- "fzf_lua" | "mini_pick" | "snacks" | "telescope"
+  --     -- Options override for custom providers
+  --     provider_opts = {},
+  --   },
+  --   vendors = {
+  --     ["copilot/claude-3.5"] = {
+  --       __inherited_from = "copilot",
+  --       model = "claude-3.5-sonnet",
+  --       display_name = "copilot/claude-3.5",
+  --       max_tokens = 65536,
+  --       disable_tools = true,
+  --     },
+  --     ["copilot/claude-3.7"] = {
+  --       __inherited_from = "copilot",
+  --       model = "claude-3.7",
+  --       display_name = "copilot/claude-3.7",
+  --       max_tokens = 65536,
+  --       disable_tools = true,
+  --     },
+  --     ["copilot/claude-3.7-thought"] = {
+  --       __inherited_from = "copilot",
+  --       model = "claude-3.7-sonnet-thought",
+  --       display_name = "copilot/claude-3.7-thought",
+  --       max_tokens = 65536,
+  --       disable_tools = true,
+  --     },
+  --     ["copilot/o4-mini"] = {
+  --       __inherited_from = "copilot",
+  --       model = "o4-mini",
+  --       display_name = "copilot/o4-mini",
+  --       max_tokens = 100000,
+  --       disable_tools = true,
+  --     },
+  --     ["copilot/gpt-4.1"] = {
+  --       __inherited_from = "copilot",
+  --       model = "gpt-4.1",
+  --       display_name = "copilot/gpt-4.1",
+  --       max_tokens = 32768,
+  --       disable_tools = true,
+  --     },
+  --     ["copilot/gemini-2.0"] = {
+  --       __inherited_from = "copilot",
+  --       model = "gemini-2.0-flash-001",
+  --       display_name = "copilot/gemini-2.0-flash",
+  --       max_tokens = 8192,
+  --       disable_tools = true,
+  --     },
+  --     ["copilot/gemini-2.5"] = {
+  --       __inherited_from = "copilot",
+  --       model = "gemini-2.5-pro",
+  --       display_name = "copilot/gemini-2.5-pro",
+  --       max_tokens = 65536,
+  --       disable_tools = true,
+  --     },
+  --   },
+  -- },
+  -- dependencies = {
+  --   "nvim-treesitter/nvim-treesitter",
+  --   "stevearc/dressing.nvim",
+  --   "nvim-lua/plenary.nvim",
+  --   "MunifTanjim/nui.nvim",
+  --   --- The below dependencies are optional,
+  --   "echasnovski/mini.pick", -- for file_selector provider mini.pick
+  --   "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
+  --   "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
+  --   "saghen/blink.compat",
+  --   "ibhagwan/fzf-lua", -- for file_selector provider fzf
+  --   "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
+  --   "zbirenbaum/copilot.lua", -- for providers='copilot'
+  --   {
+  --     -- support for image pasting
+  --     "HakonHarnes/img-clip.nvim",
+  --     event = "VeryLazy",
+  --     opts = {
+  --       -- recommended settings
+  --       default = {
+  --         embed_image_as_base64 = false,
+  --         prompt_for_file_name = false,
+  --         drag_and_drop = {
+  --           insert_mode = true,
+  --         },
+  --         -- required for Windows users
+  --         use_absolute_path = true,
+  --       },
+  --     },
+  --   },
+  --   {
+  --     -- Make sure to set this up properly if you have lazy=true
+  --     "MeanderingProgrammer/render-markdown.nvim",
+  --     opts = {
+  --       file_types = { "markdown", "Avante" },
+  --     },
+  --     ft = { "markdown", "Avante" },
+  --   },
+  -- },
+}

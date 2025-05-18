@@ -3,9 +3,13 @@ return {
   { "catppuccin/nvim" },
   { "rebelot/kanagawa.nvim" },
   {
+    "rose-pine/neovim",
+    name = "rose-pine",
+  },
+  {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "tokyonight-night",
+      colorscheme = "rose-pine",
     },
   },
 }

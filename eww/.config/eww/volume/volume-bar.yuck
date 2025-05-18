@@ -1,0 +1,46 @@
+;; volume-bar.yuck - EWW Volume Bar Widget
+
+;; Define a polling script to get the current volume percentage
+(defpoll current-volume :interval "1s"
+  "pamixer --get-volume || echo 0")
+
+;; Define a polling script to check if audio is muted
+(defpoll is-muted :interval "1s"
+  "pamixer --get-mute || echo false")
+
+;; Widget definition
+(defwidget volume-bar []
+  (box :class "volume-module" 
+       :orientation "h"
+       :space-evenly false
+       :spacing 8
+    
+    ;; Volume icon based on mute status
+    (label :class "volume-icon"
+           :text {is-muted == "true" ? "󰝟" : 
+                 current-volume < 30 ? "󰕿" :
+                 current-volume < 70 ? "󰖀" : "󰕾"})
+    
+    ;; Volume bar
+    (box :class "volume-bar-container"
+         :width 100
+      (progress :class "volume-bar"
+                :value current-volume
+                :orientation "h"))
+    
+    ;; Volume percentage text
+    (label :class "volume-text"
+           :text "${current-volume}%")))
+
+;; Window definition for the volume popup
+(defwindow volume
+  :monitor 0
+  :geometry (geometry :x "0%"
+                      :y "5%"
+                      :width "280px"
+                      :height "60px"
+                      :anchor "top center")
+  :windowtype "dock"
+  :wm-ignore true
+  :stacking "fg"
+  (volume-bar))

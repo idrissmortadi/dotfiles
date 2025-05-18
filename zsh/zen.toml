@@ -4,13 +4,13 @@ final_space = true
 
 [secondary_prompt]
   template = '❯❯ '
-  foreground = 'magenta'
+  foreground = 'cyan'
   background = 'transparent'
 
 [transient_prompt]
   template = '❯ '
   background = 'transparent'
-  foreground_templates = ['{{if gt .Code 0}}red{{end}}', '{{if eq .Code 0}}magenta{{end}}']
+  foreground_templates = ['{{if gt .Code 0}}red{{end}}', '{{if eq .Code 0}}cyan{{end}}']
 
 [[blocks]]
   type = 'prompt'
@@ -20,7 +20,7 @@ final_space = true
   [[blocks.segments]]
     style = 'plain'
     template = '{{ .Path }}'
-    foreground = 'blue'
+    foreground = 'cyan'
     background = 'transparent'
     type = 'path'
 
@@ -29,7 +29,7 @@ final_space = true
 
   [[blocks.segments]]
     style = 'plain'
-    template = '{{ if .Venv }}(-venv){{ end }}'
+    template = '{{ if .Venv }}( {{ .Venv }}){{ end }}'
     foreground = 'green'
     background = 'transparent'
     type = 'python'
@@ -70,4 +70,4 @@ final_space = true
     template = '❯'
     background = 'transparent'
     type = 'text'
-    foreground_templates = ['{{if gt .Code 0}}red{{end}}', '{{if eq .Code 0}}blue{{end}}']
+    foreground_templates = ['{{if gt .Code 0}}red{{end}}', '{{if eq .Code 0}}cyan{{end}}']

@@ -1,6 +1,10 @@
 -- Options are automatically loaded before lazy.nvim startup
 -- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
 -- Add any additional options here
+--
+
+-- Disable animations
+vim.g.snacks_animate = false
 
 -- This enables filetype-specific plugins and indenting
 vim.cmd("filetype plugin indent on")

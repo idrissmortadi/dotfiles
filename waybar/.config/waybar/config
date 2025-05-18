@@ -1,199 +1,169 @@
-{ 
+{
   "layer": "top",
-  "height": 35,
-  "margin-top": 10,
-  "margin-left": 10,
-  "margin-bottom": 0,
-  "margin-right": 10,
-  "spacing": 0,
+  "position": "top",
+  "reload_style_on_change": true,
 
-  "modules-left": [
-    "custom/launcher",
-    "custom/separator",
-    "custom/hyprconfig",
-    "custom/separator",
-    "cpu",
-    "memory",
-    "temperature",
-    "custom/filler",
-    "disk",
-    "custom/filler",
-    "custom/uptime",
-  ],
+  "modules-left": ["custom/wallpaper","custom/pacman", "custom/separator", "custom/prayer_clock"],
+
   "modules-center": ["hyprland/workspaces"],
+
   "modules-right": [
-    "battery",
-    "custom/dot",
-    "backlight",
+    "group/expand",
     "pulseaudio",
-    "custom/dot",
     "custom/separator",
     "network",
-    "custom/dot",
-    "clock",
-    "custom/dot",
-    "custom/logout",
-  ], 
+    "custom/separator",
+    "battery",
+    "custom/power_profile"
+  ],
 
-    "custom/uptime": {
-    "format": " {}",
-    "interval": 30,
-    "exec": "echo \"Up $(uptime -p | sed 's/up //;s/ hours/h/;s/ hour/h/;s/ minutes/m/;s/ minute/m/;s/, //g')\"
-",
-    "on-click" : "",
-  },
-     "disk": {
-    "interval": 1,
-    "format": "<span color=\"#68b0d6\"></span> {percentage_used}%",
-    "on-click": "filelight /",
-    "on-click-right": "filelight /home/"
-  },
+
   "hyprland/workspaces": {
-    "all-outputs": true,
-    "active-only": false,
-    "on-click": "activate",
-    "format": "{icon}",
-    "on-scroll-up": "hyprctl dispatch workspace e+1",
-    "on-scroll-down": "hyprctl dispatch workspace e-1",
-    "format-icons": {
-      "1": "",
-      "2": "",
-      "3": "",
-      "4": "",
-      "5": "",
-      "6": "",
-      "7": "",
-      "8": "",
-      "9": "",
-      "urgent": "",
-      "active": "",
-      "default": ""
-    }
+      "format": "{icon}",
+      "format-icons": {
+          "active": "",
+          "default": "",
+          "empty": ""
+      },
+      "persistent-workspaces": {
+          "*": [ 1,2,3 ]
+      }
   },
-  "tray": {
-    "icon-size": 20,
-    "spacing": 8
-  },
-  "custom/filler": {
-    "format": " "
-  },
-  "custom/dot": {
-    "format": " "
-  },
-  "custom/hyprconfig": {
-    "format": "",
-    "on-click": "sh /home/$USER/.config/waybar/hyprconfig_settings.sh",
-    "tooltip-format": "Hyprland settings",
-  },
-
   "clock": {
-    "format": "<b>{:%H:%M}</b>",
-    "format-alt": "<b>{:%a.%d,%b}</b>",
-    "tooltip-format": "<big>{:%B %Y}</big>\n<tt><small>{calendar}</small></tt>"
+      "format": "{:%H:%M} ",
+      "interval": 30,   
+      "tooltip-format": "<tt>{calendar}</tt>",
+      "calendar": {
+          "format": {
+              "today": "<span color='#fAfBfC'><b>{}</b></span>"
+          }
+      },
+      "on-click": "gnome-calendar"
   },
-
+  "pulseaudio": {
+		"format": "{icon} {volume:2}%",
+		"format-bluetooth": "{volume}% 󰥰",
+		"format-muted": "󰝟",
+		"format-icons": {
+			"headphones": "",
+			"default": [
+				"",
+				""
+			]
+		},
+		"scroll-step": 5,
+		"on-click": "pamixer -t",
+		"on-click-right": "pavucontrol"
+	},
+  "network": {
+      "format-wifi": "",
+      "format-ethernet":"",
+      "format-disconnected": "",
+      "tooltip-format-disconnected": "Error",
+      "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
+      "tooltip-format-ethernet": "{ifname} 🖧 ",
+      "on-click": "~/dotfiles/rofi/.config/rofi/network.sh"
+  },
+  "bluetooth": {
+      "format-on": "󰂯",
+      "format-off": "BT-off",
+      "format-disabled": "󰂲",
+      "format-connected-battery": "{device_battery_percentage}% 󰥉",
+      "format-alt": "{device_alias} 󰂯",
+      "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+      "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+      "tooltip-format-enumerate-connected": "{device_alias}\n{device_address}",
+      "tooltip-format-enumerate-connected-battery": "{device_alias}\n{device_address}\n{device_battery_percentage}%",
+      "on-click-right": "blueberry",
+  }, 
+  "battery": {
+      "interval":30,
+      "states": {
+          "good": 95,
+          "warning": 30,
+          "critical": 20
+      },
+      "format": "{capacity}% {icon}",
+      "format-charging": "{capacity}% 󰂄",
+      "format-plugged": "{capacity}% 󰂄 ",
+      "format-alt": "{time} {icon}",
+      "exec": "powerprofilesctl get",
+      "format-icons": [
+        "󰁻",
+        "󰁼",
+        "󰁾",
+        "󰂀",
+        "󰂂",
+        "󰁹"
+      ],
+  },
+  "custom/pacman": {
+      "format": "󰅢 {}",
+      "interval": 600,   
+      "exec": "checkupdates | wc -l",
+      "exec-if": "exit 0",
+      "on-click": "kitty sh -c 'yay -Syu; echo Done - Press enter to exit; read'; pkill -SIGRTMIN+8 waybar",
+      "signal": 8,
+      "tooltip": false,
+  },
+  "custom/expand": {
+      "format": "",
+      "tooltip": false
+  },
+  "custom/endpoint":{
+      "format": "|",
+      "tooltip": false
+  },
+  "group/expand": {
+      "orientation": "horizontal",
+      "drawer": {
+          "transition-duration": 600,
+          "transition-to-left": true,
+          "click-to-reveal": true
+      },
+      "modules": ["custom/expand",  "cpu","memory","temperature","custom/endpoint"],
+  },
   "cpu": {
-    "interval": 10,
-    "format": " {usage}% ",
-    "max-length": 10,
-    "on-click": "kitty btop"
+      "format": "󰻠",
+      "tooltip": true,
+      "on-click": "kitty btop",
   },
   "memory": {
-    "interval": 30,
-    "format": " {}% ",
-    "format-alt": " {used:0.1f}/{total} GiB",
-    "max-length": 15,
+      "format": ""
   },
-  "backlight": {
-    "device": "amdgpu_bl1",
-    "format": "{icon} {percent} ",
-    "tooltip": false,
-    "format-icons": ["", "", "", "", "", "", "", "", ""]
-  },
-  "network": {
-    "format-wifi": "󰒢 {essid}",
-    "format-alt" : "󰒢 {}",
-    "format-ethernet": " wired",
-    "tooltip-format": "{essid} {signalStrength}% {bandwidthTotalBits}",
-    "format-disconnected": "󰖪",
-    "on-click": "kitty nmtui",
-    "on-click-right": "nm-connection-editor",
-  },
-
-  "pulseaudio": {
-    "format": "{icon} <b>{volume}</b>",
-    "format-bluetooth": " {volume}",
-    "format-bluetooth-muted": " ",
-    "tooltip": false,
-    "format-muted": " ",
-    "format-icons": {
-      "default": ["󰝟", "", "󰕾" , ""]
-    },
-    "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
-    "on-click-right": "pavucontrol"
-  },
-  "battery": {
-    "bat": "BAT0",
-    "interval": 10,
-    "states": {
-      "warning": 25,
-      "critical": 20
-    },
-    "format": "{icon} {capacity}%",
-    "format-warning": "{icon}  {capacity}%",
-    "format-critical": "{icon}  {capacity}%",
-    "format-charging": "󰂄 {capacity}%",
-    "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
-    "max-length": 25,
-    "tooltip": true,
-    "on-click": "slimbookbattery",
-  },
-  "custom/launcher": {
-    "format": " 󰣇",
-    "on-click": "rofi -show combi"
-  },
-  "custom/separator": {
-    "format": " "
-  },
-  "custom/window-name": {
-    "format": " <b>{}</b>",
-    "interval": 1,
-    "exec": "hyprctl activewindow | grep class | awk '{print $2}'"
-  },
- "custom/logout": {
-   "format": "",
-   "on-click": "wlogout"
- },
- "custom/pacman": {
-   "format": "  ",
-   "on-click": "blueberry"
- },
-  "custom-pacman-update-icon-background": {
-    "format": ""
-  },
-  "custom/pacman-update-icon": {
-    "format": ""
-  },
-  "custom/pacman-update": {
-    "format": " {}",
-    "interval": 3600,
-    "exec": "checkupdates | wc -l",
-    "signal": 8
-  },
-  "custom/window-icon": {},
-
   "temperature": {
-    "thermal-zone": 0,
-    "critical-threshold": 80,
-    "format-critical": " {temperatureC}°C",
-    "format": " {temperatureC}°C"
+      "critical-threshold": 80,
+      "format": "",
+  },
+  "tray": {
+      "icon-size": 14,
+      "spacing": 10
   },
 
-  "custom/wrap-left": {
-    "format": "<b>[</b>"
+  "custom/power_profile": {
+    "exec": "~/dotfiles/waybar/.config/waybar/powerprofile.sh",
+    "return-type": "json",
+    "format": "{}",
+    "interval": 3,
+    "on-click": "~/dotfiles/waybar/.config/waybar/powerprofilecycle.sh"
   },
 
-  "custom/wrap-right": {
-    "format": "<b>]</b>"
+  "custom/wallpaper": {
+    "format": "",
+    "on-click": "~/dotfiles/rofi/.config/rofi/wallpaper-launcher.sh",
+    "tooltip": false,
+  },
+
+  "custom/separator": {
+      "format": ""
+  },
+
+  "custom/prayer_clock": {
+    "exec": "~/dotfiles/waybar/.config/waybar/prayertimes.sh",
+    "interval": 5,
+    "return-type": "json",
+    "format": "{}",
+    "tooltip": true,
+    "on-click": "gnome-calendar"
   }
 }
