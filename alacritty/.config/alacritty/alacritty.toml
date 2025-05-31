@@ -1,0 +1,28 @@
+[general]
+import = [
+    "~/.config/alacritty/themes/themes/tokyo_night.toml"
+]
+
+[env]
+TERM = "xterm-256color"
+
+[font]
+size = 18.0
+offset = { x = 0, y = 3 }
+
+[font.normal]
+family = "Liga SFMono Nerd Font"
+style = "Regular"
+
+[font.bold]
+family = "Liga SFMono Nerd Font"
+style = "Bold"
+
+[font.italic]
+family = "Liga SFMono Nerd Font"
+style = "Italic"
+
+[[keyboard.bindings]]
+key = "v"
+mods = "Command|Shift"
+action = "ToggleViMode"
